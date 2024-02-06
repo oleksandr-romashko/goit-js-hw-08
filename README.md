@@ -12,7 +12,7 @@ This project was created on the basis of the `Vite` development environment tool
 
 ## Quickstart
 
-This project is deployed to GitHub Pages.
+This project is deployed to [GitHub Pages](https://oleksandr-romashko.github.io/goit-js-hw-08/).
 
 For the local build, follow the instruction below:
 
