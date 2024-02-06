@@ -1,113 +1,104 @@
-# Vanilla App Template
+# goit-js-hw-08
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+Homework for `NPM`, `Modular JavaScript` and `Local Storage` topics.
 
-## Створення репозиторію за шаблоном
+The project uses [Lodash](https://lodash.com/) and [SimpleLightbox](https://simplelightbox.com/) libraries.
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+## Vanilla App Template
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+This project was created using the `vanilla-app-template` as a template. Learn more about its usage [in Ukrainian](./README.vanilla-app-template.uk.md) / [in Romanian](./README.vanilla-app-template.ro.md) README file or refer to the documentation [vanilla-app-template repository on GitHub](https://github.com/goitacademy/vanilla-app-template).
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+This project was created on the basis of the `Vite` development environment tool. To familiarize yourself with the tool and configure additional features [refer to the documentation at vitejs.dev](https://vitejs.dev/).
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+## Quickstart
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+This project is deployed to GitHub Pages.
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+For the local build, follow the instruction below:
 
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
+1. Copy repo files.
+1. At the command line use `npm install` command inside project root folder to install all necessary project dependancies.
+1. At the command line use `npm run dev` to start local web server.
+1. Open [http://localhost:5173/](http://localhost:5173/) (by default) page in your browser.
+1. To stop web server use `Ctrl + C` (for Windows) or 
+`Control + C` (for MacOS і Linux) command at the command line . 
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+### Acceptance criteria
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
+* Repository name `goit-js-hw-08`.
+* Deployed to `GitHub Pages`.
+* During live page visit, there are no errors or warnings generated in the console.
+* Project built with [vanilla-app-template](https://github.com/goitacademy/vanilla-app-template).
+* Code formatted with `Prettier`.
 
-## Підготовка до роботи
+### Startup files
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
+[Download the startup files](./assets/src.zip) with the layout, styles, and attached script files for each task. Copy them to your project, completely overwriting the `src` folder in [vanilla-app-template](https://github.com/goitacademy/vanilla-app-template).
 
-## Файли і папки
+### Task 1 - `SimpleLightbox` library
 
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
+Do this task in the `01-gallery.html` and `01-gallery.js` files. Break it down into several subtasks:
 
-## Деплой
+1. Add the [SimpleLightbox](https://simplelightbox.com/) library as a project dependency using `npm` (the CDN link from [your past work](https://github.com/oleksandr-romashko/goit-js-finalproject) is no longer needed).
+1. Use your JavaScript code from [the previous homework](https://github.com/oleksandr-romashko/goit-js-finalproject), but refactor it given that the library was installed via `npm` (import/export syntax).
 
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
+In order to add the CSS code of the library to the project, you need to add one more import, aside from the one described in the documentation.
 
-```json
-"build": "vite build --base=/<REPO>/",
+```javascript
+// Described in documentation;
+import SimpleLightbox from "simplelightbox";
+
+// Additional styles import
+import "simplelightbox/dist/simple-lightbox.min.css";
 ```
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+### Task 2 - video player
 
-![GitHub Pages settings](./assets/repo-settings.png)
+In HTML, there is `<iframe>` with video for Vimeo player. Write a script that will save the current video playback time to local storage and, upon page reload, continue to play the video from that time.
 
-### Статус деплою
+```html
+<iframe
+  id="vimeo-player"
+  src="https://player.vimeo.com/video/236203659"
+  width="640"
+  height="360"
+  frameborder="0"
+  allowfullscreen
+  allow="autoplay; encrypted-media"
+></iframe>
+```
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+Do this task in the `02-video.html` and `02-video.js` files. Break it down into several subtasks:
 
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
+1. Check out the [documentation](https://github.com/vimeo/player.js/#vimeo-player-api) of the Vimeo player library.
+1. Add the library as a project dependency via `npm`.
+1. Initialize the player in the script file as described in the [pre-existing player](https://github.com/vimeo/player.js/#pre-existing-player) section, but note that you have added the player as an `npm` package, not via `CDN`.
+1. Read the documentation of the [on()](https://github.com/vimeo/player.js/#onevent-string-callback-function-void) method and start tracking the [timeupdate](https://github.com/vimeo/player.js/#events) event - playback time update.
+1. Save playback time to local storage. Let the key for the storage be the `"videoplayer-current-time"` string.
+1. When reloading the page, use the [setCurrentTime()](https://github.com/vimeo/player.js/#setcurrenttimeseconds-number-promisenumber-rangeerrorerror) method to resume playback from the saved position.
+1. Add the [lodash.throttle](https://www.npmjs.com/package/lodash.throttle) library to the project and make sure that the playback time is updated in the storage once a second or less frequent.
 
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
+### Task 3 - feedback form
 
-![Deployment status](./assets/deploy-status.png)
+In HTML, there is form markup. Write a script that will save field values to local storage when the user types something.
 
-### Жива сторінка
+```html
+<form class="feedback-form" autocomplete="off">
+  <label>
+    Email
+    <input type="email" name="email" autofocus />
+  </label>
+  <label>
+    Message
+    <textarea name="message" rows="8"></textarea>
+  </label>
+  <button type="submit">Submit</button>
+</form>
+```
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
+Do this task in the `03-feedback.html` and `03-feedback.js` files. Break it down into several subtasks:
 
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
-
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
+1. Track the `input` event on the form, and each time write to local storage an object with the `email` and `message` fields, in which you save the current values of the form fields. Let the key for the storage be the `"feedback-form-state"` string.
+1. When loading the page, check the state of the storage, and if it stores some data, use it to fill in the form fields. Otherwise, the fields must be empty.
+1. When submitting the form, clear the storage and form fields, and also display the object with the `email` and `message` fields and their current values in the console.
+1. Make sure that the storage is updated no more than once every 500 milliseconds. To do this, add to the project and use the [lodash.throttle](https://www.npmjs.com/package/lodash.throttle) library.
