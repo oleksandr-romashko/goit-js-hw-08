@@ -35,6 +35,7 @@ function onPlayerSetTimeError(error, time) {
           `Stored video playback time is set to '${time}' seconds.\n` +
           'The time is less than 0 or greater than the video’s duration.'
       );
+      onResetPlaybackTime();
       break;
     }
     default: {
