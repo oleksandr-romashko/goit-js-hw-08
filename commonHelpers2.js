@@ -1,0 +1,4 @@
+import"./assets/modulepreload-polyfill-3cfb730f.js";/* empty css                      */import"https://player.vimeo.com/api/player.js";import{t as l}from"./assets/vendor-71ac5ada.js";const r="videoplayer-current-time";let n;const o=new Vimeo.Player(document.getElementById("vimeo-player"));o.on("loaded",m);o.on("timeupdate",l(a,1e3,{trailing:!1}));o.on("pause",a);o.on("ended",u);function m({id:e}){n=e;const t=p(e);o.setCurrentTime(t).catch(s=>d(s,t))}function a({seconds:e}){i(e)}function u(){i(0)}function d(e,t){switch(e.name){case"RangeError":{console.error(`RangeError:
+Stored video playback time is set to '${t}' seconds.
+The time is less than 0 or greater than the video’s duration.`);break}default:{console.error(e);break}}}function p(e){return c()[e]??0}function i(e){const t=c();t[n]=e,localStorage.setItem(r,JSON.stringify({[n]:e}))}function c(){return JSON.parse(localStorage.getItem(r))??{}}
+//# sourceMappingURL=commonHelpers2.js.map
