@@ -1,63 +1,48 @@
 import throttle from 'lodash.throttle';
 
-const LS_FORM_VALUES_KEY = 'feedback-form-state';
+const LS_FORM_DATA_KEY = 'feedback-form-state';
 
 const form = document.querySelector('.feedback-form');
-
-form.addEventListener('input', throttle(onFormInput, 500));
+form.addEventListener('input', throttle(onInput, 500));
 form.addEventListener('submit', onFormSubmit);
 
-init();
-
-function init() {
-  let storageValues = loadValuesFromStorage();
-  if (!storageValues) {
-    return;
-  }
-
+const storageData = loadFromStorage();
+if (Object.keys(storageData).length) {
   [...form.elements].forEach(el => {
-    const storageValue = storageValues[el.name];
-    if (storageValue) {
-      el.value = storageValue;
-    }
+    el.value = storageData[el.name];
   });
 }
 
-function onFormInput() {
-  const formValues = readFormValues();
-  Object.keys(formValues).length
-    ? saveValuesToStorage(formValues)
-    : clearStorage();
+function onInput() {
+  const formData = getFormData();
+  Object.keys(formData).length ? saveToStorage(formData) : clearStorage();
+}
+
+function getFormData() {
+  const formData = {};
+  [...form.elements].forEach(({ nodeName, name, value }) => {
+    if (nodeName !== 'BUTTON' && value) {
+      formData[name] = value;
+    }
+  });
+  return formData;
 }
 
 function onFormSubmit(event) {
   event.preventDefault();
-  const values = loadValuesFromStorage();
-  clearStorage();
+  console.log(getFormData());
   form.reset();
-  console.log(values);
+  clearStorage();
 }
 
-function readFormValues() {
-  const formValues = {};
-  [...form.elements].forEach(({ nodeName, name, value }) => {
-    if (
-      value.trim().replace('\n', '') &&
-      (nodeName == 'INPUT' || nodeName == 'TEXTAREA')
-    ) {
-      formValues[name] = value;
-    }
-  });
-  return formValues;
+function loadFromStorage() {
+  return JSON.parse(localStorage.getItem(LS_FORM_DATA_KEY)) ?? {};
 }
 
-function loadValuesFromStorage() {
-  return JSON.parse(localStorage.getItem(LS_FORM_VALUES_KEY));
+function saveToStorage(data) {
+  localStorage.setItem(LS_FORM_DATA_KEY, JSON.stringify(data));
 }
 
-function saveValuesToStorage(values) {
-  localStorage.setItem(LS_FORM_VALUES_KEY, JSON.stringify(values));
-}
 function clearStorage() {
-  localStorage.removeItem(LS_FORM_VALUES_KEY);
+  localStorage.removeItem(LS_FORM_DATA_KEY);
 }
