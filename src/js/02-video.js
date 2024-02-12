@@ -4,7 +4,7 @@ import throttle from 'lodash.throttle';
 const VIDEO_PLAYER_CURRENT_TIME_KEY = 'videoplayer-current-time';
 let currentVideoId;
 
-const player = new Player(document.getElementById('vimeo-player'));
+const player = new Player('vimeo-player');
 
 player.on('loaded', onLoaded);
 player.on('timeupdate', throttle(onSaveCurrentTime, 1000, { trailing: false }));
