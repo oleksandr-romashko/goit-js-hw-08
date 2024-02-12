@@ -1,64 +1,16 @@
 import Player from '@vimeo/player';
 import throttle from 'lodash.throttle';
 
-const VIDEO_PLAYER_CURRENT_TIME_KEY = 'videoplayer-current-time';
-let currentVideoId;
+const PLAYER_CURRENT_TIME_KEY = 'videoplayer-current-time';
 
 const player = new Player('vimeo-player');
-
-player.on('loaded', onLoaded);
-player.on('timeupdate', throttle(onSaveCurrentTime, 1000, { trailing: false }));
-player.on('pause', onSaveCurrentTime);
-player.on('ended', onResetPlaybackTime);
-
-function onLoaded({ id }) {
-  currentVideoId = id;
-  const currentTime = getPlaybackTime(id);
-  player
-    .setCurrentTime(currentTime)
-    .catch(error => onPlayerSetTimeError(error, currentTime));
-}
+player.setCurrentTime(getPlaybackTime());
+player.on('timeupdate', throttle(onSaveCurrentTime, 1000));
 
 function onSaveCurrentTime({ seconds }) {
-  saveTimeToStorage(seconds);
+  localStorage.setItem(PLAYER_CURRENT_TIME_KEY, seconds);
 }
 
-function onResetPlaybackTime() {
-  saveTimeToStorage(0);
-}
-
-function onPlayerSetTimeError(error, time) {
-  switch (error.name) {
-    case 'RangeError': {
-      console.error(
-        'RangeError:\n' +
-          `Stored video playback time is set to '${time}' seconds.\n` +
-          'The time is less than 0 or greater than the video’s duration.'
-      );
-      onResetPlaybackTime();
-      break;
-    }
-    default: {
-      console.error(error);
-      break;
-    }
-  }
-}
-
-function getPlaybackTime(id) {
-  const playbacks = getStoredPlaybacks();
-  return playbacks[id] ?? 0;
-}
-
-function saveTimeToStorage(time) {
-  const playbacks = getStoredPlaybacks();
-  playbacks[currentVideoId] = time;
-  localStorage.setItem(
-    VIDEO_PLAYER_CURRENT_TIME_KEY,
-    JSON.stringify({ [currentVideoId]: time })
-  );
-}
-
-function getStoredPlaybacks() {
-  return JSON.parse(localStorage.getItem(VIDEO_PLAYER_CURRENT_TIME_KEY)) ?? {};
+function getPlaybackTime() {
+  return localStorage.getItem(PLAYER_CURRENT_TIME_KEY) ?? 0;
 }
