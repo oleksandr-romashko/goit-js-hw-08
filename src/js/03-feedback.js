@@ -7,7 +7,9 @@ const form = document.querySelector('.feedback-form');
 const storageData = JSON.parse(localStorage.getItem(LS_FORM_DATA_KEY)) ?? {};
 if (Object.keys(storageData).length) {
   [...form.elements].forEach(el => {
-    el.value = storageData[el.name];
+    if (storageData[el.name]) {
+      el.value = storageData[el.name];
+    }
   });
 }
 
